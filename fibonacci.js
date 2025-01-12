@@ -8,4 +8,10 @@ function fibs(num) {
   }
   return arr;
 }
-console.log(fibs(1));
+
+function fibsRec(num) {
+  if (num === 1) return 0;
+  if (num === 2) return 1;
+  return fibsRec(num - 1) + fibsRec(num - 2);
+}
+console.log(fibsRec(6));
