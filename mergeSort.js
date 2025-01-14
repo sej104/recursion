@@ -1,4 +1,5 @@
 function mergeSort(array) {
+  if (!array.length) return null;
   if (array.length === 1) return array;
 
   const middleIndex = array.length / 2;
@@ -7,22 +8,19 @@ function mergeSort(array) {
   return merge(leftArray, rightArray);
 }
 
-function merge(firstArray, secondArray) {
+function merge(leftArray, rightArray) {
   const mergedArray = [];
-  while (firstArray.length && secondArray.length) {
-    if (firstArray[0] <= secondArray[0]) {
-      mergedArray.push(firstArray.shift());
-    } else {
-      mergedArray.push(secondArray.shift());
-    }
+
+  while (leftArray.length && rightArray.length) {
+    if (leftArray[0] <= rightArray[0]) mergedArray.push(leftArray.shift());
+    else mergedArray.push(rightArray.shift());
   }
-  if (!firstArray.length) {
-    mergedArray.push(...secondArray);
-  } else {
-    mergedArray.push(...firstArray);
-  }
+
+  if (!leftArray.length) mergedArray.push(...rightArray);
+  else mergedArray.push(...leftArray);
+
   return mergedArray;
 }
 
-const array = [5, 7, 3, 1, 54, 23, 10, 99, 5, 2, 6];
+const array = [3, 2, 1, 13, 8, 5, 0, 1];
 console.log(mergeSort(array));
