@@ -1,12 +1,12 @@
 function fibs(num) {
-  const arr = [0, 1];
-  if (num <= 0) return -1;
-  if (num === 1) return arr.slice(0, 1);
+  if (num <= 0) return null;
+  if (num === 1) return [0];
 
+  const array = [0, 1];
   for (let i = 1; i < num - 1; i++) {
-    arr.push(arr[i] + arr[i - 1]);
+    array.push(array[i] + array[i - 1]);
   }
-  return arr;
+  return array;
 }
 
 function fibsRec(num) {
@@ -15,7 +15,8 @@ function fibsRec(num) {
   if (num === 2) return [0, 1];
 
   const array = fibsRec(num - 1);
-  array.push(array[num - 2] + array[num - 3]);
+  const length = array.length;
+  array.push(array[length - 1] + array[length - 2]);
   return array;
 }
 
