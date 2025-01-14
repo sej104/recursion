@@ -5,6 +5,7 @@ function mergeSort(array) {
   const middleIndex = array.length / 2;
   const leftArray = mergeSort(array.slice(0, middleIndex));
   const rightArray = mergeSort(array.slice(middleIndex, array.length));
+
   return merge(leftArray, rightArray);
 }
 
@@ -16,10 +17,7 @@ function merge(leftArray, rightArray) {
     else mergedArray.push(rightArray.shift());
   }
 
-  if (!leftArray.length) mergedArray.push(...rightArray);
-  else mergedArray.push(...leftArray);
-
-  return mergedArray;
+  return mergedArray.concat(leftArray, rightArray);
 }
 
 const array = [3, 2, 1, 13, 8, 5, 0, 1];
